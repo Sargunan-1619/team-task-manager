@@ -43,16 +43,7 @@ exports.getTasks = async (req, res) => {
 // Update Task
 exports.updateTask = async (req, res) => {
   try {
-    const allowedFields = ["title", "description", "project", "assignedTo", "status", "priority", "dueDate"];
-    const updates = {};
-
-    allowedFields.forEach((field) => {
-      if (req.body[field] !== undefined) {
-        updates[field] = req.body[field];
-      }
-    });
-
-    const task = await Task.findByIdAndUpdate(req.params.id, updates, {
+    const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
 
@@ -87,6 +78,13 @@ exports.updateStatus = async (req, res) => {
         new: true,
       }
     );
+
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        message: "Task not found",
+      });
+    }
 
     res.json({
       success: true,

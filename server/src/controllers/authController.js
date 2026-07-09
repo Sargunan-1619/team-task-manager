@@ -37,7 +37,7 @@ const register = async (req, res) => {
         id: user._id,
         role: user.role
       },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET || "dev-secret-change-me",
       {
         expiresIn: "7d"
       }
@@ -93,7 +93,7 @@ const login = async (req, res) => {
         id: user._id,
         role: user.role
       },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET || "dev-secret-change-me",
       {
         expiresIn: "7d"
       }
