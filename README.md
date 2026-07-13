@@ -136,5 +136,5 @@ Sargunan C
 
 ## Links
 
-- Live Demo: 
-- GitHub Repository: 
+- Live Demo: http://localhost:5173/login
+- GitHub Repository: https://github.com/Sargunan-1619/team-task-manager
